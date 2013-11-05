@@ -11,8 +11,8 @@ import com.exemplo.entidade.Cliente;
 
 public class RepositorioCliente {
 	
-	EntityManagerFactory emf;
-	EntityManager em;
+	private EntityManagerFactory emf;
+	private EntityManager em;
 	
 	public RepositorioCliente(){
 		emf = Persistence.createEntityManagerFactory("dias");
@@ -40,7 +40,8 @@ public class RepositorioCliente {
 		em.getTransaction().commit();
 		emf.close();
 	}
-	@SuppressWarnings("unchecked")
+	
+	@SuppressWarnings({ "unused", "unchecked" })
 	public List<Cliente> listarTodos(){
 		em.getTransaction().begin();
 		Query consulta = em.createQuery("select cliente from Cliente cliente");
